@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Lesson 21</title>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+	<script>
+        let canvas = document.getElementById('canvas');
+        let ctx = canvas.getContext('2d');
+
+        function drawSnowman (x, y, r, isFill) {
+            ctx.arc(x, y, r / 12, 360, 2 * Math.PI, true);
+            ctx.moveTo(x, y - (r / 2.4) );
+            ctx.arc(x, y - (r / 2), r/12, 360, 2 * Math.PI, true);
+            ctx.moveTo(x,y- (r / 0.7) );
+            ctx.arc(x, y - (1.5 * r), r/12, 360, 2 * Math.PI, true);
+            ctx.moveTo(x, y- (r / 0.52) );
+            ctx.arc(x, y - (2 * r), r / 12, 360, 2 * Math.PI, true);
+            if(isFill) {
+                ctx.fill();
+            } else{
+                ctx.stroke();
+            }
+            ctx.beginPath();
+            ctx.arc(x, y, r, 360, 2 * Math.PI, true);
+            ctx.moveTo(x, y - r);
+            ctx.arc(x, y - (1.67 * r), r/1.5, 360, 2 * Math.PI, true);
+            ctx.moveTo(x, y - (r / 0.43) );
+            ctx.arc(x, y - (2.85 * r), r / 2, 360, 2 * Math.PI, true);
+            ctx.stroke();
+        }
+        drawSnowman(180, 200, 30,true);
+
+        let points = [
+            [50, 50],
+            [50, 100],
+            [100, 100],
+            [100, 50],
+            [50, 50]
+        ];
+
+        function drawLines (point) {
+            ctx.beginPath();
+            ctx.moveTo(point[0][0],point[0][1]);
+            for(i = 1; i < point.length; i++) {
+                ctx.lineTo(point[i][0],point[i][1]);
+            }
+            ctx.stroke();
+        }
+        drawLines(points);
+
+	</script>
+</body>
+</html>
+
